@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.or.skhu</groupId>
-	<artifactId>SKHU_notice</artifactId>
+	<artifactId>SKHU_news</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SKHU_notice Maven Webapp</name>
+	<name>SKHU_news Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
