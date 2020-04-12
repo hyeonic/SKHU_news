@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 // DispatcherServlet (FrontController)
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "kr.or.skhu.notice.controller" })
+@ComponentScan(basePackages = { "kr.or.skhu.news.controller" })
 public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
@@ -44,4 +44,3 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
         return resolver;
     }
 }
-

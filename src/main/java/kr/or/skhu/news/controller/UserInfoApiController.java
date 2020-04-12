@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +21,7 @@ public class UserInfoApiController {
 	UserInfoService userInfoService;
 
 	// /userCheck url로 get방식으로 JSON 전달
-	@GetMapping
+	@PostMapping
 	public Map<String, Object> userInfoList() {
 		List<UserInfo> userInfoList = userInfoService.getUserInfo();
 

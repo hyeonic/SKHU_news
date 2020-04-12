@@ -1,19 +1,21 @@
 package kr.or.skhu.news.dto;
 
-import java.util.Date;
-
 // NoticeDto class, notice table 의 항목을 저장하는 javaBeans, toString 메서드만 override 해둠
 public class Notice {
 	private int id;
+	private int idx;
 	private int categoryId;
 	private String noticeTitle;
 	private String noticeHref;
 	private String noticeWriter;
-	private Date createDate;
+	private String createDate;
 	private int viewCount;
 
-	public Notice (int id, int categoryId, String category, String noticeTitle, String noticeHref, String noticeWriter, Date createDate, int viewCount) {
-		this.id = id;
+	public Notice() {
+	};
+
+	public Notice (int idx, int categoryId, String noticeTitle, String noticeHref, String noticeWriter, String createDate, int viewCount) {
+		this.idx = idx;
 		this.categoryId = categoryId;
 		this.noticeTitle = noticeTitle;
 		this.noticeHref = noticeHref;
@@ -25,9 +27,16 @@ public class Notice {
 	public int getId() {
 		return id;
 	}
+	public void setIdx(int idx) {
+		this.id = idx;
+	}
+	public int getIdx() {
+		return idx;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getCategoryId() {
 		return categoryId;
 	}
@@ -52,10 +61,10 @@ public class Notice {
 	public void setNoticeWriter(String noticeWriter) {
 		this.noticeWriter = noticeWriter;
 	}
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 	public int getViewCount() {
@@ -67,8 +76,8 @@ public class Notice {
 
 	@Override
 	public String toString() {
-		return "Notice [id=" + id + ", categoryId=" + categoryId +  ", noticeTitle="
-				+ noticeTitle + ", noticeHref=" + noticeHref + ", noticeWriter=" + noticeWriter + ", createDate="
-				+ createDate + ", viewCount=" + viewCount + "]";
+		return "Notice [id=" + id + ", idx=" + idx + ", categoryId=" + categoryId + ", noticeTitle=" + noticeTitle
+				+ ", noticeHref=" + noticeHref + ", noticeWriter=" + noticeWriter + ", createDate=" + createDate
+				+ ", viewCount=" + viewCount + "]";
 	}
 }

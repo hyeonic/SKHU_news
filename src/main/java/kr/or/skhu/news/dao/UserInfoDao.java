@@ -15,7 +15,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import kr.or.skhu.news.dto.Notice;
 import kr.or.skhu.news.dto.UserInfo;
 
 //UserInfoDao
@@ -27,15 +26,18 @@ public class UserInfoDao {
 
 	public UserInfoDao(DataSource dataSource) { // dataSource를 통하여 connection
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
-		this.insertAction = new SimpleJdbcInsert(dataSource).withTableName("user_info"); // insert를 사용하기 위한 부분 따로 sql문을 선언할 필요 없다.
+		this.insertAction = new SimpleJdbcInsert(dataSource)
+								.withTableName("user_info")
+								.usingGeneratedKeyColumns("id")
+								.usingGeneratedKeyColumns("create_date"); // insert를 사용하기 위한 부분 따로 sql문을 선언할 필요 없다.
 	}
 
 	public List<UserInfo> selectAll() {
 		return jdbc.query(SELECT_ALL, Collections.emptyMap(), rowMapper);
 	}
 
-	public int insert(Notice notice) {
-		SqlParameterSource params = new BeanPropertySqlParameterSource(notice); // DB column에 맞추어 자동으로 insert 해줌
+	public int insert(UserInfo userInfo) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(userInfo); // DB column에 맞추어 자동으로 insert 해줌
 		return insertAction.execute(params);
 	}
 }

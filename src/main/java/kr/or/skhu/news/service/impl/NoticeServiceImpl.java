@@ -30,6 +30,14 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeList;
 	}
 
+	// category 별 list를 return
+	@Override
+	@Transactional
+	public List<Notice> getNoticeByCategory(int categoryId) {
+		List<Notice> noticeByCategoryList = noticeDao.selectByCategory(categoryId);
+		return noticeByCategoryList;
+	}
+
 	// category list를 return
 	@Override
 	@Transactional
@@ -37,14 +45,6 @@ public class NoticeServiceImpl implements NoticeService {
 		List<Category> categoryList = categoryDao.selectAll();
 		return categoryList;
 	}
-
-	// insert를 위한 service 진행 중
-	@Override
-	@Transactional(readOnly = false)
-	public int insertNotice(List<Notice> noticeList) {
-
-
-		return 0;
-	}
-
 }
+
+

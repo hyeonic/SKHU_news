@@ -10,12 +10,13 @@ public class UserInfo {
 	private String userName;
 	private Date createDate;
 
-	public UserInfo(int id, String userId, String userPassword, String userName, Date createDate) {
-		this.id = id;
+	public UserInfo() {
+	};
+
+	public UserInfo(String userId, String userPassword, String userName) {
 		this.userId = userId;
 		this.userPassword = userPassword;
 		this.userName = userName;
-		this.createDate = createDate;
 	}
 
 	public int getId() {

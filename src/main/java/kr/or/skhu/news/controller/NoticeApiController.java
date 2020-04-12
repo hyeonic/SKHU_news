@@ -4,8 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,5 +37,19 @@ public class NoticeApiController {
 		map.put("categoryList", categoryList);
 
 		return map;
+	}
+
+	@PostMapping("/{categoryId}")
+	public Map<String, Object> noticeByCategoryList(@PathVariable(name="categoryId") int id, HttpServletRequest request) {
+
+		List<Notice> noticeByCategoryList = noticeService.getNotices();
+		List<Category> categoryList = noticeService.getCategories();
+		Map<String, Object> map = new HashMap<>();
+
+		map.put("noticeByCategoryList", noticeByCategoryList);
+		map.put("categoryList", categoryList);
+
+		return map;
+
 	}
 }
