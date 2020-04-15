@@ -35,7 +35,6 @@ public class NoticeApiController {
 
 		map.put("noticeList", noticeList);
 		map.put("categoryList", categoryList);
-
 		return map;
 	}
 
@@ -50,6 +49,5 @@ public class NoticeApiController {
 		map.put("categoryList", categoryList);
 
 		return map;
-
 	}
 }

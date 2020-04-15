@@ -11,5 +11,5 @@ public interface UserInfoService {
 	public List<UserInfo> getUserInfo();
 	public boolean compareUser(UserInfo userInfo);
 	public int signUp(UserInfo userInfo);
-	public boolean isUserExist(UserInfo userInfo);
+	public boolean isUserExist(String userId);
 }

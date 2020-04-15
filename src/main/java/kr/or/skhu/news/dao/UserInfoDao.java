@@ -1,6 +1,6 @@
 package kr.or.skhu.news.dao;
 
-import static kr.or.skhu.news.dao.NoticeDaoSqls.FIND_BY_IDX;
+import static kr.or.skhu.news.dao.UserInfoDaoSqls.FIND_BY_ID;
 import static kr.or.skhu.news.dao.UserInfoDaoSqls.SELECT_ALL;
 
 import java.util.Collections;
@@ -42,9 +42,12 @@ public class UserInfoDao {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(userInfo); // DB column에 맞추어 자동으로 insert 해줌
 		return insertAction.execute(params);
 	}
-	
-	public int findByIdx(String userId) {
+
+	public int findById(String userId) {
 		Map<String, ?> params = Collections.singletonMap("userId", userId);
-		return jdbc.queryForObject(FIND_BY_IDX, params, Integer.class);
+		System.out.print("UserInfoDao : findById param[userId] : value[" + userId + "]==>");
+		System.out.println(params.get("userId"));
+
+		return jdbc.queryForObject(FIND_BY_ID, params, Integer.class);
 	}
 }

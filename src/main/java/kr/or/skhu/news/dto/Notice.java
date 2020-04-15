@@ -27,14 +27,14 @@ public class Notice {
 	public int getId() {
 		return id;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public void setIdx(int idx) {
-		this.id = idx;
+		this.idx = idx;
 	}
 	public int getIdx() {
 		return idx;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public int getCategoryId() {
@@ -76,7 +76,7 @@ public class Notice {
 
 	@Override
 	public String toString() {
-		return "Notice [id=" + id + ", idx=" + idx + ", categoryId=" + categoryId + ", noticeTitle=" + noticeTitle
+		return "Notice [idx=" + idx + ", categoryId=" + categoryId + ", noticeTitle=" + noticeTitle
 				+ ", noticeHref=" + noticeHref + ", noticeWriter=" + noticeWriter + ", createDate=" + createDate
 				+ ", viewCount=" + viewCount + "]";
 	}

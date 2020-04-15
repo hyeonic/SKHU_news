@@ -41,17 +41,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 		return 0;
 	}
-	
+
 	@Override
 	@Transactional
-	public boolean isUserExist(UserInfo userInfo) {
-		
-		if (userInfoDao.findByIdx(userInfo.getUserId()) == 1) {
-			return true;
-		}else {
-			return false;
-		}
+	public boolean isUserExist(String userId) {
+		return (userInfoDao.findById(userId) != 0 ? true : false);
 	}
-	
+
 
 }
