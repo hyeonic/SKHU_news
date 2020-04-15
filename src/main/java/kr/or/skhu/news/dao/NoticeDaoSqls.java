@@ -11,7 +11,7 @@ public class NoticeDaoSqls {
 
 	public static final String FIND_BY_IDX = "SELECT EXISTS (select * "
 										   + "				 FROM notice "
-										   + "			     WHERE idx = :idx) as count; ";
+										   + "			     WHERE idx = :idx) as searchResult; ";
 
 	public static final String SELECT_COUNT = "SELECT count(*) "
 											+ "FROM notice; ";

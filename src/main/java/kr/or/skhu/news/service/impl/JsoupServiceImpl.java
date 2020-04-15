@@ -38,7 +38,7 @@ public class JsoupServiceImpl implements JsoupService {
 				e.printStackTrace();
 			}
 
-			Elements element = doc.select("table.board_list tbody tr:last-child");
+			Elements element = doc.select("table.board_list tbody tr");
 
 			for (Element el : element) {
 				if (el.select("td:nth-child(1)").text().toString().equals("공지")) {
