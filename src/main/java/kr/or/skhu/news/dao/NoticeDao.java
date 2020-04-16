@@ -41,7 +41,7 @@ public class NoticeDao {
 
 	public List<Notice> selectByCategory(int categoryId) {
 		Map<String, ?> params = Collections.singletonMap("categoryId", categoryId);
-		return jdbc.query(SELECT_BY_CATEGORY, Collections.emptyMap(), rowMapper);
+		return jdbc.query(SELECT_BY_CATEGORY, params, rowMapper);
 	}
 
 	public int findByIdx(int idx) {

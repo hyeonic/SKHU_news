@@ -12,4 +12,5 @@ public interface NoticeService {
 	public List<Notice> getNotices();
 	public List<Notice> getNoticeByCategory(int categoryId);
 	public List<Category> getCategories();
+	public String getHtml(int idx);
 }

@@ -36,9 +36,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	@Transactional(readOnly = false)
 	public int signUp(UserInfo userInfo) {
-
 		userInfoDao.insert(userInfo);
-
 		return 0;
 	}
 

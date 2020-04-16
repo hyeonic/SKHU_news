@@ -33,10 +33,9 @@ public class NoticeApiController {
 		Map<String, Object> map = new HashMap<>();
 
 		map.put("noticeList", noticeList);
-		map.put("categoryList", categoryList);
 		return map;
 	}
-	
+
 	// /notice url로 get방식으로 JSON 전달
 	@PostMapping
 	public Map<String, Object> noticeList() {
@@ -46,19 +45,16 @@ public class NoticeApiController {
 		Map<String, Object> map = new HashMap<>();
 
 		map.put("noticeList", noticeList);
-		map.put("categoryList", categoryList);
 		return map;
 	}
 
 	@PostMapping("/{categoryId}")
 	public Map<String, Object> noticeByCategoryList(@PathVariable(name="categoryId") int id, HttpServletRequest request) {
 
-		List<Notice> noticeByCategoryList = noticeService.getNotices();
-		List<Category> categoryList = noticeService.getCategories();
+		List<Notice> noticeList = noticeService.getNoticeByCategory(id);
 		Map<String, Object> map = new HashMap<>();
 
-		map.put("noticeByCategoryList", noticeByCategoryList);
-		map.put("categoryList", categoryList);
+		map.put("noticeList", noticeList);
 
 		return map;
 	}

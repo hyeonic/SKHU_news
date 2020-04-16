@@ -1,5 +1,10 @@
 package kr.or.skhu.news.dao;
 
+import static kr.or.skhu.news.dao.NoticeDetailDaoSqls.FIND_BY_IDX;
+
+import java.util.Collections;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -23,6 +28,11 @@ public class NoticeDetailDao {
 		this.insertAction = new SimpleJdbcInsert(dataSource)
 				.withTableName("notice_detail")
 				.usingGeneratedKeyColumns("id"); // insert를 사용하기 위한 부분 따로 sql문을 선언할 필요 없다.
+	}
+
+	public String findByIdx(int idx) {
+		Map<String, ?> params = Collections.singletonMap("idx", idx);
+		return jdbc.queryForObject(FIND_BY_IDX, params, String.class);
 	}
 
 	public Long insert(NoticeDetail noticeDetail) {

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.skhu.news.dao.CategoryDao;
 import kr.or.skhu.news.dao.NoticeDao;
+import kr.or.skhu.news.dao.NoticeDetailDao;
 import kr.or.skhu.news.dto.Category;
 import kr.or.skhu.news.dto.Notice;
 import kr.or.skhu.news.service.NoticeService;
@@ -21,6 +22,9 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Autowired
 	CategoryDao categoryDao;
+
+	@Autowired
+	NoticeDetailDao noticeDetailDao;
 
 	// notice list를 return
 	@Override
@@ -44,6 +48,13 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<Category> getCategories() {
 		List<Category> categoryList = categoryDao.selectAll();
 		return categoryList;
+	}
+
+	@Override
+	@Transactional
+	public String getHtml(int idx) {
+		String html = noticeDetailDao.findByIdx(idx);
+		return html;
 	}
 }
 

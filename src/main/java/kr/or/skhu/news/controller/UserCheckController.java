@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,15 +23,11 @@ public class UserCheckController {
 
 		String userId = request.getParameter("userId");
 
-		System.out.println("UserCheckResult : loginCheck*=*=*=");
-
 		System.out.print("request parameter : userId["+userId+"] == >");
 		boolean isUserExist = userInfoService.isUserExist(userId);
 
 		System.out.println(isUserExist ? "is Exist" : "is not Exist");
 		model.addAttribute("isUserExist", isUserExist);
-//		System.out.println("model value: " + model.get("isUserExist"));
-
 
 		return "userCheck";
 	}
