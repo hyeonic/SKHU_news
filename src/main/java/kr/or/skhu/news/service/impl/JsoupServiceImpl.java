@@ -46,7 +46,8 @@ public class JsoupServiceImpl implements JsoupService {
 			}
 
 			Elements element = doc.select("table.board_list tbody tr");
-
+			int checkA = 0;
+			int checkB = 0;
 			for (Element el : element) {
 				if (el.select("td:nth-child(1)").text().toString().equals("공지")) {
 				}else if (noticeDao.findByIdx(Integer.parseInt(el.select("td:nth-child(2) a").attr("href").substring(19, 24))) == 0) {
@@ -63,23 +64,17 @@ public class JsoupServiceImpl implements JsoupService {
 					String url1 = "http://www.skhu.ac.kr/board/" + el.select("td:nth-child(2) a").attr("href");
 
 					Document doc1 = null;
-
+					
 					try {
 						doc1 = Jsoup.connect(url1).get();
 					}catch (IOException e) {
 						e.printStackTrace();
 					}
 					String s = "";
-					String f = "";
-					String i1 = "";
-					Elements element1 = doc1.select(".board_view tbody tr");
-
+		
+					Elements element1 = doc1.select(".board_view > tbody");
+					
 					for (Element el1 : element1) {
-						f += el1.select("tr:nth-child(2)").html();
-						f += "\n";
-
-						i1 += el1.select("tr:nth-child(3)").html();
-						i1 += "\n";
 
 						s += "<tr>";
 						s += el1.select("tr:nth-child(2)").html();
@@ -91,9 +86,6 @@ public class JsoupServiceImpl implements JsoupService {
 						s += "</tbody> </body> </html>";
 
 						s = s.replaceAll("\"/common", "\"http://www.skhu.ac.kr/common");
-						f = f.replaceAll("/common", "http://www.skhu.ac.kr/common");
-						i1 = i1.replaceAll("/common", "http://www.skhu.ac.kr/common");
-						// "/common = http://www.skhu.ac.kr/common
 
 						String httpInfo ="<!DOCTYPE HTML>";
 						httpInfo += "<html>";
@@ -107,13 +99,13 @@ public class JsoupServiceImpl implements JsoupService {
 						httpInfo += "<style> #content{ float: none; margin: 0 auto; } </style> </head>";
 						httpInfo += "<body> <tbody>";
 						httpInfo += s;
-
+						
 						NoticeDetail noticeDetail = new NoticeDetail(Integer.parseInt(el.select("td:nth-child(2) a").attr("href").substring(19, 24))
 																			 , httpInfo);
 						noticeDetailDao.insert(noticeDetail);
-//						System.out.println("\n\n" + httpInfo + "\n\n");
+						System.out.println("JsoupServiceImpl insert notice_detail : " + httpInfo + "\n\n");
 
-
+								
 					}
 				}
 			}

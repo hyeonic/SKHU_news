@@ -25,8 +25,20 @@ public class NoticeApiController {
 	@Autowired
 	NoticeService noticeService;
 
-	// /notice url로 get방식으로 JSON 전달
 	@GetMapping
+	public Map<String, Object> noticeList1() {
+		List<Notice> noticeList = noticeService.getNotices();
+		List<Category> categoryList = noticeService.getCategories();
+
+		Map<String, Object> map = new HashMap<>();
+
+		map.put("noticeList", noticeList);
+		map.put("categoryList", categoryList);
+		return map;
+	}
+	
+	// /notice url로 get방식으로 JSON 전달
+	@PostMapping
 	public Map<String, Object> noticeList() {
 		List<Notice> noticeList = noticeService.getNotices();
 		List<Category> categoryList = noticeService.getCategories();

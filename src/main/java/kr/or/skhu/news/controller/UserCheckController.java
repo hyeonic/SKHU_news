@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.skhu.news.service.UserInfoService;
@@ -18,7 +19,7 @@ public class UserCheckController {
 	@Autowired
 	UserInfoService userInfoService;
 
-	@GetMapping(path="/userCheck")
+	@PostMapping(path="/userCheck")
 	public String loginCheck(HttpServletRequest request, ModelMap model) {
 
 		String userId = request.getParameter("userId");

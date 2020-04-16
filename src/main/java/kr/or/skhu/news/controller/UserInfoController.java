@@ -28,9 +28,9 @@ public class UserInfoController {
 		System.out.println(request.getParameter("userPassword"));
 		System.out.println(request.getParameter("userName"));
 
-		UserInfo userInfo = new UserInfo(request.getParameter("userId")
-                , request.getParameter("userPassword")
-                , request.getParameter("userName")
+		UserInfo userInfo = new UserInfo(userId
+                , userPassword
+                , userName
                 );
 		
 		userInfoService.signUp(userInfo);
